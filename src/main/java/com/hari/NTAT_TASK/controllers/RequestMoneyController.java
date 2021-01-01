@@ -41,7 +41,6 @@ public class RequestMoneyController {
     @PostMapping("/request_money")
     public ResponseEntity<?> requestMoney(@RequestBody RequestMoneyRequest requestMoneyRequest){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println(requestMoneyRequest.getRecipient()+"--"+requestMoneyRequest.getAmount()+"--"+requestMoneyRequest.getPayer());
         if (auth.getName().equals(requestMoneyRequest.getRecipient())) {
             Optional<Users> payer = repository.findByusername(requestMoneyRequest.getPayer());
             if (payer.isPresent()) {

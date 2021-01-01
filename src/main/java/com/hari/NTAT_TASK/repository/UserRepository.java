@@ -12,6 +12,6 @@ import java.util.Optional;
 public interface UserRepository extends MongoRepository<Users, String> {
     Optional<Users> findByusername(String username);
 
-    @Query(value="{username : {$ne : ?0}}", fields="{password : 0,upi_pin : 0,profile:{balance : 0}}")
+    @Query(value="{username : {$ne : ?0}}", fields="{password : 0,upi_pin : 0}")
     List<Users> findByUsernameNot(String username);
 }
